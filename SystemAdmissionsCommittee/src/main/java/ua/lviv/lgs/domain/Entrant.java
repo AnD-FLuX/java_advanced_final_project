@@ -2,6 +2,7 @@ package ua.lviv.lgs.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -12,7 +13,8 @@ public class Entrant {
 
 	@OneToOne
 	@MapsId
-	private User user;
+	@JoinColumn(name = "user_id")
+	private User userId;
 
 	@Column
 	private String city;
@@ -26,18 +28,19 @@ public class Entrant {
 	public Entrant() {
 	}
 
-	public Entrant(String city, String school, String uploadPhoto) {
+	public Entrant(User userId, String city, String school, String uploadPhoto) {
+		this.userId = userId;
 		this.city = city;
 		this.school = school;
 		this.uploadPhoto = uploadPhoto;
 	}
 
-	public User getUser() {
-		return user;
+	public User getUserId() {
+		return userId;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserId(User userId) {
+		this.userId = userId;
 	}
 
 	public String getCity() {
@@ -71,7 +74,7 @@ public class Entrant {
 		result = prime * result + ((city == null) ? 0 : city.hashCode());
 		result = prime * result + ((school == null) ? 0 : school.hashCode());
 		result = prime * result + ((uploadPhoto == null) ? 0 : uploadPhoto.hashCode());
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
 		return result;
 	}
 
@@ -99,17 +102,17 @@ public class Entrant {
 				return false;
 		} else if (!uploadPhoto.equals(other.uploadPhoto))
 			return false;
-		if (user == null) {
-			if (other.user != null)
+		if (userId == null) {
+			if (other.userId != null)
 				return false;
-		} else if (!user.equals(other.user))
+		} else if (!userId.equals(other.userId))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Entrant [user=" + user + ", city=" + city + ", school=" + school + ", uploadPhoto=" + uploadPhoto + "]";
+		return "Entrant [userId=" + userId + ", city=" + city + ", school=" + school + ", uploadPhoto=" + uploadPhoto + "]";
 	}
 
 }
