@@ -1,9 +1,14 @@
 package ua.lviv.lgs.domain;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
 import javax.persistence.MapsId;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -11,10 +16,9 @@ import javax.persistence.Table;
 @Table(name = "entrant")
 public class Entrant {
 
-	@OneToOne
-	@MapsId
-	@JoinColumn(name = "user_id")
-	private User userId;
+	@Id
+	@Column
+	private Integer id;
 
 	@Column
 	private String city;
@@ -25,22 +29,29 @@ public class Entrant {
 	@Column
 	private String uploadPhoto;
 
+	@OneToOne
+	@MapsId
+	private User user;
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "entrant")
+	@Column(nullable = false)
+	private Set<RegistrationForFaculty> registrationForFaculty;
+
 	public Entrant() {
 	}
 
-	public Entrant(User userId, String city, String school, String uploadPhoto) {
-		this.userId = userId;
+	public Entrant(String city, String school, String uploadPhoto) {
 		this.city = city;
 		this.school = school;
 		this.uploadPhoto = uploadPhoto;
 	}
 
-	public User getUserId() {
-		return userId;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setUserId(User userId) {
-		this.userId = userId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getCity() {
@@ -67,14 +78,30 @@ public class Entrant {
 		this.uploadPhoto = uploadPhoto;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Set<RegistrationForFaculty> getRegistrationForFaculty() {
+		return registrationForFaculty;
+	}
+
+	public void setRegistrationForFaculty(Set<RegistrationForFaculty> registrationForFaculty) {
+		this.registrationForFaculty = registrationForFaculty;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((city == null) ? 0 : city.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((school == null) ? 0 : school.hashCode());
 		result = prime * result + ((uploadPhoto == null) ? 0 : uploadPhoto.hashCode());
-		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
 		return result;
 	}
 
@@ -92,6 +119,11 @@ public class Entrant {
 				return false;
 		} else if (!city.equals(other.city))
 			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
 		if (school == null) {
 			if (other.school != null)
 				return false;
@@ -102,17 +134,12 @@ public class Entrant {
 				return false;
 		} else if (!uploadPhoto.equals(other.uploadPhoto))
 			return false;
-		if (userId == null) {
-			if (other.userId != null)
-				return false;
-		} else if (!userId.equals(other.userId))
-			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Entrant [userId=" + userId + ", city=" + city + ", school=" + school + ", uploadPhoto=" + uploadPhoto + "]";
+		return "Entrant [id=" + id + ", city=" + city + ", school=" + school + ", uploadPhoto=" + uploadPhoto + "]";
 	}
 
 }

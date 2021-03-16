@@ -10,6 +10,6 @@ import ua.lviv.lgs.domain.Subject;
 @Repository
 public interface SubjectRepository extends JpaRepository<Subject, Integer> {
 
-	Optional<Subject> findByTitle(String title);
+	Optional<Subject> findByName(String name);
 
 }

@@ -31,7 +31,7 @@ public class Faculty {
 	private String logoUrl;
 
 	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "faculty_subject", joinColumns = @JoinColumn(name = "faculty_id"), inverseJoinColumns = @JoinColumn(name = "subject_id"))
+	@JoinTable(name = "subject_faculty", joinColumns = @JoinColumn(name = "faculty_id"), inverseJoinColumns = @JoinColumn(name = "subject_id"))
 	private List<Subject> subjects;
 
 	public Faculty() {
@@ -91,7 +91,6 @@ public class Faculty {
 		result = prime * result + ((logoUrl == null) ? 0 : logoUrl.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((numberOfStudents == null) ? 0 : numberOfStudents.hashCode());
-		result = prime * result + ((subjects == null) ? 0 : subjects.hashCode());
 		return result;
 	}
 
@@ -123,11 +122,6 @@ public class Faculty {
 			if (other.numberOfStudents != null)
 				return false;
 		} else if (!numberOfStudents.equals(other.numberOfStudents))
-			return false;
-		if (subjects == null) {
-			if (other.subjects != null)
-				return false;
-		} else if (!subjects.equals(other.subjects))
 			return false;
 		return true;
 	}

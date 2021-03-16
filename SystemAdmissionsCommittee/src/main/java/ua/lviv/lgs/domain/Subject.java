@@ -1,7 +1,14 @@
 package ua.lviv.lgs.domain;
 
-import javax.persistence.*;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "subject")
@@ -14,15 +21,13 @@ public class Subject {
 	@Column
 	private String name;
 
-	@ManyToMany()
+	@ManyToMany(mappedBy = "subjects")
 	private List<Faculty> faculties;
 
 	public Subject() {
-		super();
 	}
 
 	public Subject(String name) {
-		super();
 		this.name = name;
 	}
 
@@ -54,7 +59,6 @@ public class Subject {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((faculties == null) ? 0 : faculties.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
@@ -69,11 +73,6 @@ public class Subject {
 		if (getClass() != obj.getClass())
 			return false;
 		Subject other = (Subject) obj;
-		if (faculties == null) {
-			if (other.faculties != null)
-				return false;
-		} else if (!faculties.equals(other.faculties))
-			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -89,7 +88,7 @@ public class Subject {
 
 	@Override
 	public String toString() {
-		return "Subject [id=" + id + ", name=" + name + ", faculties=" + faculties + "]";
+		return "Subject [id=" + id + ", name=" + name + "]";
 	}
 
 }
