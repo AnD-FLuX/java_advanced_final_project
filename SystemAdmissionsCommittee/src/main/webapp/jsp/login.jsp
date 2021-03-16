@@ -11,38 +11,65 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="">
-
+    <meta name="author" content="AnD_FLuX">
     <title>Log in with your account</title>
+    <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+    <link rel='stylesheet prefetch'
+	href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
 
-    <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
-    <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
-
+<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
 <div class="container">
-
-    <form method="POST" action="${contextPath}/login" class="form-signin">
-        <h2 class="form-heading">Log in</h2>
+<header>
+			<h1>
+				<a href="#"> <img src="images/logo.png"	alt="Admissions Committee"></a>
+			</h1>
+		</header>
+	<h1 class="text-center">Log In</h1>
+    <form method="POST" action="${contextPath}/login" class="registration-form">
+ 
 
         <div class="form-group ${error != null ? 'has-error' : ''}">
-            <span>${message}</span>
-            <input name="email" type="text" class="form-control" placeholder="Email"
-                   autofocus="true"/>
-            <input name="password" type="password" class="form-control" placeholder="Password"/>
+              
+            <div class="text-center">   	
+            <span class="label-text">${message}</span>
+            </div>
+                
+            <label>
+            <span class="label-text marg-tp">Email</span> 
+            <input name="email" type="text" name="email" required/>
+            </label> 
+            
+            <label>
+            <span class="label-text">Password</span> 
+            <input name="password" type="password" name="password" required/>
+            </label> 
+            
+            <div class="text-center">            
             <span>${error}</span>
+            </div>
+            
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
-            <h4 class="text-center"><a href="${contextPath}/registration">Create an account</a></h4>
-        </div>
-
+			
+			<div class="text-center marg-tp">
+            	<button type="submit" class="submit" type="submit">Log In</button>
+            </div>
+            	
+			
+         	<h4 class="text-center marg-tp"><a href="${contextPath}/registration">Create an account</a></h4>
+        	
+        	
+   		</div>
     </form>
 
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
+<script
+		src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src="js/index.js"></script>
+
+
 </body>
 </html>

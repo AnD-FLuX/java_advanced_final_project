@@ -12,8 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "user")
@@ -23,21 +21,16 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
-	@NotBlank(message = "This field is required!")
 	@Column
 	private String email;
 
 	@Column
-	@NotBlank(message = "This field is required!")
 	private String firstName;
 
 	@Column
-	@NotBlank(message = "This field is required!")
 	private String lastName;
 
 	@Column
-	@Size(min = 8, message = "Password length is at least 8 characters!")
-	@NotBlank(message = "This field is required")
 	private String password;
 
 	@Transient
