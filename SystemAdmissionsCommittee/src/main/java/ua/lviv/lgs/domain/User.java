@@ -12,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -24,9 +23,8 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
-	@Email
 	@NotBlank(message = "This field is required!")
-	@Column(name = "email", unique = true)
+	@Column
 	private String email;
 
 	@Column
@@ -43,7 +41,7 @@ public class User {
 	private String password;
 
 	@Transient
-	private String confirmPassword;
+	private String passwordConfirm;
 
 	@Enumerated(EnumType.STRING)
 	private UserRole role;
@@ -60,6 +58,15 @@ public class User {
 		this.lastName = lastName;
 		this.password = password;
 		this.role = role;
+	}
+
+	public User(User user) {
+		this.id = user.id;
+		this.email = user.email;
+		this.firstName = user.firstName;
+		this.lastName = user.lastName;
+		this.password = user.password;
+		this.role = user.role;
 	}
 
 	public Integer getId() {
@@ -102,12 +109,12 @@ public class User {
 		this.password = password;
 	}
 
-	public String getConfirmPassword() {
-		return confirmPassword;
+	public String getPasswordConfirm() {
+		return passwordConfirm;
 	}
 
-	public void setConfirmPassword(String confirmPassword) {
-		this.confirmPassword = confirmPassword;
+	public void setPasswordConfirm(String passwordConfirm) {
+		this.passwordConfirm = passwordConfirm;
 	}
 
 	public UserRole getRole() {
@@ -130,9 +137,7 @@ public class User {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((confirmPassword == null) ? 0 : confirmPassword.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((entrant == null) ? 0 : entrant.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
@@ -150,20 +155,10 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (confirmPassword == null) {
-			if (other.confirmPassword != null)
-				return false;
-		} else if (!confirmPassword.equals(other.confirmPassword))
-			return false;
 		if (email == null) {
 			if (other.email != null)
 				return false;
 		} else if (!email.equals(other.email))
-			return false;
-		if (entrant == null) {
-			if (other.entrant != null)
-				return false;
-		} else if (!entrant.equals(other.entrant))
 			return false;
 		if (firstName == null) {
 			if (other.firstName != null)
@@ -193,7 +188,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", password=" + password + ", confirmPassword=" + confirmPassword + ", role=" + role + "]";
+				+ ", password=" + password + ", role=" + role + "]";
 	}
 
 }
