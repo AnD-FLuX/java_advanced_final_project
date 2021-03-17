@@ -35,56 +35,46 @@
 		<form:form method="POST" modelAttribute="userForm" class="registration-form" id="reg_form">
 		
 		<spring:bind path="firstName">
-			<div class="${status.error ? 'has-error' : ''}">
 				<label class="col-one-half"> 
 					<span class="label-text">First Name</span> 
 					<form:input type="text" path="firstName" name="firstName" required="true"></form:input>
 					<form:errors path="firstName"></form:errors>
-				</label> 
-			</div>
+				</label> 	
 		</spring:bind>
 			
 			
 		<spring:bind path="lastName">	
-			<div class=" ${status.error ? 'has-error' : ''}">
 				<label class="col-one-half">
 					<span class="label-text">Last Name</span> 
 					<form:input type="text"  path="lastName" name="lastName" required="true"></form:input>
 					<form:errors path="lastName"></form:errors>
-				</label> 
-			</div>
+				</label> 		
 		</spring:bind>			
 				
 					
-		<spring:bind path="email">		
-			<div class="${status.error ? 'has-error' : ''}">	
+		<spring:bind path="email">			
 				<label> 
 					<span class="label-text">Email</span> 
 					<form:input	type="text" path="email" name="email" required="true"></form:input>
 					<form:errors path="email"></form:errors>	
-				</label> 
-			</div>
+				</label> 			
 		</spring:bind>	
 			
 		
 		<spring:bind path="password">
-            <div class=" ${status.error ? 'has-error' : ''}">	
-				<label class="password"> 
+         		<label class="password"> 
 					<span class="label-text">Password</span>
 					<form:input id="t1" type="password" path="password" name="password" required="true" minlength="8"></form:input>
 					<form:errors path="password"></form:errors>
 				</label>
-			</div>
 		</spring:bind>	
 			
 		<spring:bind path="passwordConfirm">	
-			<div class=" ${status.error ? 'has-error' : ''}">
 			 	<label class="password"> 
 			 		<span id="t3" class="label-text">Password confirm</span> 
 			 		<form:input id="t2" type="password" path="passwordConfirm" name="passwordConfirm" required="true" minlength="8"></form:input>
             		<form:errors path="passwordConfirm"></form:errors>
 				</label>
-	 		</div>
         </spring:bind>
 
 
@@ -92,10 +82,7 @@
 				<button type="submit" class="submit" name="submit">Sign Me Up</button>
 			</div>
 			
-			
 			<h4 class="text-center marg-tp"><a href="${contextPath}/login">Back to LogIn</a></h4>
-			
-			
 			
 		 </form:form>
 	</div>
