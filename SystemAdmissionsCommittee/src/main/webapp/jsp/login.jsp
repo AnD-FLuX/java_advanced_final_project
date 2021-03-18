@@ -40,12 +40,13 @@
                 
             <label>
             <span class="label-text marg-tp">Email</span> 
-            <input name="email" type="text" name="email" required/>
+            <input name="email" type="text" name="email" required />
+            
             </label> 
             
             <label>
             <span class="label-text">Password</span> 
-            <input name="password" type="password" name="password" required/>
+            <input name="password" type="password" name="password" required />
             </label> 
             
             <div class="text-center">            

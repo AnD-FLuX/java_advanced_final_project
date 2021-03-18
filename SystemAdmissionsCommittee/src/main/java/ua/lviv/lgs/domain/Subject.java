@@ -21,7 +21,7 @@ public class Subject {
 	@Column
 	private String name;
 
-	@ManyToMany(mappedBy = "subjects")
+	@ManyToMany()
 	private List<Faculty> faculties;
 
 	public Subject() {
@@ -88,7 +88,7 @@ public class Subject {
 
 	@Override
 	public String toString() {
-		return "Subject [id=" + id + ", name=" + name + "]";
+		return name;
 	}
 
 }

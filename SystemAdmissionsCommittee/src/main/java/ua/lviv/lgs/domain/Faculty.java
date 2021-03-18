@@ -37,6 +37,13 @@ public class Faculty {
 	public Faculty() {
 	}
 
+	public Faculty(String name, Integer numberOfStudents, List<Subject> subjects) {
+		super();
+		this.name = name;
+		this.numberOfStudents = numberOfStudents;
+		this.subjects = subjects;
+	}
+
 	public Faculty(String name, Integer numberOfStudents, String logoUrl) {
 		this.name = name;
 		this.numberOfStudents = numberOfStudents;
