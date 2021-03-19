@@ -30,8 +30,8 @@ public class Faculty {
 	@Column
 	private String logoUrl;
 
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "subject_faculty", joinColumns = @JoinColumn(name = "faculty_id"), inverseJoinColumns = @JoinColumn(name = "subject_id"))
+	@ManyToMany(fetch=FetchType.LAZY)
+	@JoinTable(name = "faculty_subjects", joinColumns = @JoinColumn(name = "faculty_id"), inverseJoinColumns = @JoinColumn(name = "subject_id"))
 	private List<Subject> subjects;
 
 	public Faculty() {

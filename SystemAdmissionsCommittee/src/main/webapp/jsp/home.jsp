@@ -41,7 +41,7 @@
   <hr>
   <h5 class="w3-bar-item">System:</h5>
   <a onclick="document.forms['logoutForm'].submit()" class="w3-bar-item w3-button w3-hover-red w3-cursive"><i class="fas fa-sign-out-alt"></i>  LogOut</a>
- <hr>
+
    <div class="w3-display-bottommiddle"><img src="/images/logo.png" alt="education" style="width:200px"></div>                             
 </div>
 

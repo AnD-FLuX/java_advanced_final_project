@@ -41,7 +41,7 @@
   <hr>
   <h5 class="w3-bar-item">System:</h5>
   <a onclick="document.forms['logoutForm'].submit()" class="w3-bar-item w3-button w3-hover-red w3-cursive"><i class="fas fa-sign-out-alt"></i>  LogOut</a>
- <hr>
+
    <div class="w3-display-bottommiddle"><img src="/images/logo.png" alt="education" style="width:200px"></div>                             
 </div>
 
@@ -70,30 +70,32 @@
 				 <form:form class="w3-container w3-card-4 w3-light-grey" method="POST" action="${contextPath}/addFaculty" modelAttribute="faculty">
 					<div class="w3-container" style="display:flex">
 					
-					<div class="w3-container" style="width=250px">
+					<div class="w3-container" style="width:50%">
 					
 					<br>
-							<form:label  class="w3-text-blue" path="name">Name</form:label>
-							<form:input class="w3-input w3-border w3-light-grey" path="name" />
+							<form:label  class="w3-text-blue" path="name" >Name</form:label>
+							<form:input class="w3-input w3-border" path="name" required="true"/>
 							<br>
 							<form:label  class="w3-text-blue " path="numberOfStudents">numberOfStudents</form:label>
-							<form:input class="w3-input w3-border w3-light-grey" path="numberOfStudents" />
+							<form:input class="w3-input w3-border" path="numberOfStudents" type="number" required="true"/>
 							<br>
 						
 					</div>
-					<div class="w3-container" style="width=250px">
+					
+					<div class="w3-container" style="width:50%">
 					<br>
 								<label class="w3-text-blue " for="firstSubject">First subject</label><br>
-                                <input class="w3-input w3-border" type="text" id="firstSubject" name="firstSubject" value="ukr" readonly>
-                                <br>
+                                <input class="w3-input w3-border" type="text" id="firstSubject" name="firstSubject" value="Ukrainian" readonly><br>
+                                                       
                                 <label class="w3-text-blue " for="secondSubject">Second subject</label><br>
-                                <input class="w3-input w3-border" type="text" id="secondSubject" name="secondSubject" value="math" readonly><br>
-                                <br>
+                                <input class="w3-input w3-border" type="text" id="secondSubject" name="secondSubject" value="Mathematics" readonly><br>
+                                                                
                                 <label class="w3-text-blue " for="thirdSubject">Third subject</label><br>
                                 <select class="w3-select w3-border" name="thirdSubject" id="thirdSubject">
-                                    <option value="engl">engl</option>
-                                    <option value="phys">phys</option>
-                                    <option value="biol">biol</option>
+                                    <option value="English">English</option>
+                                    <option value="Physics">Physics</option>
+                                    <option value="Biology">Biology</option>
+                                    <option value="History">History</option>
                                 
                                 </select>
 									
@@ -102,7 +104,7 @@
 					
 				</div>	
 			</div><br>
-							<input  class="w3-btn w3-blue w3-hover-green" style="margin:20px" type="submit" value="Submit" />
+							<input  class="w3-btn w3-blue w3-hover-green w3-right" style="margin:30px; width:150px;" type="submit" value="Submit" />
 						
 				
 					<input type="hidden" name="${_csrf.parameterName}"

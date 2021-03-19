@@ -21,7 +21,7 @@ public class Subject {
 	@Column
 	private String name;
 
-	@ManyToMany()
+	@ManyToMany(mappedBy = "subjects")
 	private List<Faculty> faculties;
 
 	public Subject() {

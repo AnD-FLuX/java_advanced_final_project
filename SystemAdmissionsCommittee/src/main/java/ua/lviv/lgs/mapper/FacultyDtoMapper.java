@@ -16,8 +16,7 @@ public class FacultyDtoMapper {
 	@Autowired
 	private SubjectRepository subjectRepository;
 
-	public Faculty createEntity(String name, Integer numberOfStudents, List<Subject> subjects)
-			throws IOException {
+	public Faculty createEntity(String name, Integer numberOfStudents, List<Subject> subjects) throws IOException {
 
 		Faculty faculty = new Faculty();
 		List<String> collect = subjects.stream().map(subject -> subject.getName()).collect(Collectors.toList());
