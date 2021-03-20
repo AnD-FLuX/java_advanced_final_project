@@ -6,17 +6,23 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.multipart.MultipartFile;
 
 import ua.lviv.lgs.dao.SubjectRepository;
 import ua.lviv.lgs.domain.Faculty;
 import ua.lviv.lgs.domain.Subject;
+import ua.lviv.lgs.service.FileService;
 
 @Controller
 public class FacultyDtoMapper {
 	@Autowired
 	private SubjectRepository subjectRepository;
 
-	public Faculty createEntity(String name, Integer numberOfStudents, List<Subject> subjects) throws IOException {
+	@Autowired
+	private FileService fileService;
+
+	public Faculty createEntity(String name, Integer numberOfStudents, MultipartFile logoUrl, List<Subject> subjects)
+			throws IOException {
 
 		Faculty faculty = new Faculty();
 		List<String> collect = subjects.stream().map(subject -> subject.getName()).collect(Collectors.toList());
@@ -24,6 +30,7 @@ public class FacultyDtoMapper {
 		mapSubjects(subjects, allByNameLike);
 		faculty.setName(name);
 		faculty.setNumberOfStudents(numberOfStudents);
+		faculty.setLogoUrl(fileService.saveFileAndReturnPathForDB(logoUrl, faculty.getName()));
 		faculty.setSubjects(subjects);
 
 		return faculty;

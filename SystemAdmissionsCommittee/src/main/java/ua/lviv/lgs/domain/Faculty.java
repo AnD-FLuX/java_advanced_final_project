@@ -27,10 +27,9 @@ public class Faculty {
 	@Column
 	private Integer numberOfStudents;
 
-	@Column
 	private String logoUrl;
 
-	@ManyToMany(fetch=FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "faculty_subjects", joinColumns = @JoinColumn(name = "faculty_id"), inverseJoinColumns = @JoinColumn(name = "subject_id"))
 	private List<Subject> subjects;
 
@@ -38,16 +37,16 @@ public class Faculty {
 	}
 
 	public Faculty(String name, Integer numberOfStudents, List<Subject> subjects) {
-		super();
 		this.name = name;
 		this.numberOfStudents = numberOfStudents;
 		this.subjects = subjects;
 	}
 
-	public Faculty(String name, Integer numberOfStudents, String logoUrl) {
+	public Faculty(Integer id, String name, Integer numberOfStudents, List<Subject> subjects) {
+		this.id = id;
 		this.name = name;
 		this.numberOfStudents = numberOfStudents;
-		this.logoUrl = logoUrl;
+		this.subjects = subjects;
 	}
 
 	public Integer getId() {
@@ -95,7 +94,6 @@ public class Faculty {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((logoUrl == null) ? 0 : logoUrl.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((numberOfStudents == null) ? 0 : numberOfStudents.hashCode());
 		return result;
@@ -135,8 +133,7 @@ public class Faculty {
 
 	@Override
 	public String toString() {
-		return "Faculty [id=" + id + ", name=" + name + ", numberOfStudents=" + numberOfStudents + ", logoUrl="
-				+ logoUrl + "]";
+		return "Faculty [id=" + id + ", name=" + name + ", numberOfStudents=" + numberOfStudents +  "]";
 	}
 
 }

@@ -25,7 +25,8 @@
 	<h2 style="margin: 15px; font-size: 25px">Welcome ${pageContext.request.userPrincipal.name} </h2>
  <hr>
   <h5 class="w3-bar-item">Manage:</h5>
- <a href="/account" class="w3-bar-item w3-button w3-hover-red w3-cursive"> <i class="far fa-address-card"></i>  Account</a>
+ <a href="/userAccount" class="w3-bar-item w3-button w3-hover-red w3-cursive"> <i class="far fa-address-card"></i>  Account</a>
+ <a href="/entrantAccount" class="w3-bar-item w3-button w3-hover-red w3-cursive"> <i class="far fa-address-card"></i>  Account</a>
   <hr>
   <h5 class="w3-bar-item">General:</h5>
   
@@ -66,7 +67,7 @@
 					<c:forEach items="${registrationFaculty}" var="currentFaculty">
 					
 						<div class="w3-card-4" style="width: 250px; margin:2%" >
-							<img src="https://kaverisias.com/wp-content/uploads/2018/01/catalog-default-img.gif" style="width: 100%">
+							<img src="${currentFaculty.logoUrl}" style="height: 160px; width: 100%">
 							<div class="w3-container w3-center w3-light-grey">
 								<h3>${currentFaculty.name}</h3>
 								<p>${currentFaculty.numberOfStudents}</p>

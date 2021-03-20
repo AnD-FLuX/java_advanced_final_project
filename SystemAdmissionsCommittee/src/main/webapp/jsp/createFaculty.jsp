@@ -26,7 +26,8 @@
 	<h2 style="margin: 15px; font-size: 25px">Welcome ${pageContext.request.userPrincipal.name} </h2>
  <hr>
   <h5 class="w3-bar-item">Manage:</h5>
- <a href="/account" class="w3-bar-item w3-button w3-hover-red w3-cursive"> <i class="far fa-address-card"></i>  Account</a>
+ <a href="/userAccount" class="w3-bar-item w3-button w3-hover-red w3-cursive"> <i class="far fa-address-card"></i>  Account</a>
+ <a href="/entrantAccount" class="w3-bar-item w3-button w3-hover-red w3-cursive"> <i class="far fa-address-card"></i>  Account</a>
   <hr>
   <h5 class="w3-bar-item">General:</h5>
   
@@ -67,43 +68,49 @@
 
 						
 						
-				 <form:form class="w3-container w3-card-4 w3-light-grey" method="POST" action="${contextPath}/addFaculty" modelAttribute="faculty">
+				 <form:form class="w3-container w3-card-4 w3-light-grey" method="POST" action="${contextPath}/addFaculty" enctype="multipart/form-data">
 					<div class="w3-container" style="display:flex">
 					
 					<div class="w3-container" style="width:50%">
 					
 					<br>
-							<form:label  class="w3-text-blue" path="name" >Name</form:label>
-							<form:input class="w3-input w3-border" path="name" required="true"/>
+							<label  class="w3-text-blue" name="name" >Name:</label>
+							<input class="w3-input w3-border" name="name" required/>
 							<br>
-							<form:label  class="w3-text-blue " path="numberOfStudents">numberOfStudents</form:label>
-							<form:input class="w3-input w3-border" path="numberOfStudents" type="number" required="true"/>
+							<label  class="w3-text-blue " name="numberOfStudents">Number Of Students:</label>
+							<input class="w3-input w3-border" name="numberOfStudents" type="number" required/>
 							<br>
-						
+							<label  class="w3-text-blue " name="logoUrl">Faculty logo:</label><br>
+                            <input class="w3-input w3-border"  name="logoUrl" type="file" required/><br>
 					</div>
 					
 					<div class="w3-container" style="width:50%">
 					<br>
 								<label class="w3-text-blue " for="firstSubject">First subject</label><br>
                                 <input class="w3-input w3-border" type="text" id="firstSubject" name="firstSubject" value="Ukrainian" readonly><br>
-                                                       
-                                <label class="w3-text-blue " for="secondSubject">Second subject</label><br>
-                                <input class="w3-input w3-border" type="text" id="secondSubject" name="secondSubject" value="Mathematics" readonly><br>
-                                                                
-                                <label class="w3-text-blue " for="thirdSubject">Third subject</label><br>
-                                <select class="w3-select w3-border" name="thirdSubject" id="thirdSubject">
+                                                                                  
+                                <label class="w3-text-blue " for="secondSubject">Third subject</label><br>
+                                <select class="w3-select w3-border" name="secondSubject" id="secondSubject">
+                                 <option value="Mathematics">Mathematics</option>
                                     <option value="English">English</option>
                                     <option value="Physics">Physics</option>
                                     <option value="Biology">Biology</option>
                                     <option value="History">History</option>
-                                
+                        	    </select>   
+                                       <br> 
+                                   <br>                                                                 
+                                <label class="w3-text-blue " for="thirdSubject">Third subject</label><br>
+                                <select class="w3-select w3-border" name="thirdSubject" id="thirdSubject">
+                                    <option value="Mathematics">Mathematics</option>
+                                    <option value="English">English</option>
+                                    <option value="Physics">Physics</option>
+                                    <option value="Biology">Biology</option>
+                                    <option value="History">History</option>
                                 </select>
-									
 						
-					
-					
-				</div>	
-			</div><br>
+							</div>	
+							</div>
+							<br>
 							<input  class="w3-btn w3-blue w3-hover-green w3-right" style="margin:30px; width:150px;" type="submit" value="Submit" />
 						
 				

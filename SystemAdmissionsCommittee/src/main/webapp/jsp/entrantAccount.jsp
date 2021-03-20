@@ -1,5 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
@@ -25,7 +26,8 @@
 	<h2 style="margin: 15px; font-size: 25px">Welcome ${pageContext.request.userPrincipal.name} </h2>
  <hr>
   <h5 class="w3-bar-item">Manage:</h5>
- <a href="/account" class="w3-bar-item w3-button w3-red w3-hover-red w3-cursive"> <i class="far fa-address-card"></i>  Account</a>
+ <a href="/userAccount" class="w3-bar-item w3-button w3-hover-red w3-cursive"> <i class="far fa-address-card"></i>  Account</a>
+ <a href="/entrantAccount" class="w3-bar-item w3-button w3-red w3-hover-red w3-cursive"> <i class="far fa-address-card"></i>  Account</a>
   <hr>
   <h5 class="w3-bar-item">General:</h5>
   
@@ -59,17 +61,40 @@
 <!--Content -->
 
 					<div class="w3-container w3-red w3-margin w3-card-4">
-  						<h2>Account:</h2>
+  						<h2>Entrant Account:</h2>
 						</div>
 						
 <div class="w3-container">
 
  
+    <div class="w3-container w3-card-4 w3-light-grey" style="width:800px; padding:25px">
+        <div class="w3-half" >
 
+        <div class="w3-card-2" style="width:320px">
+        <img src="${entrantInfo.uploadPhoto}" class="w3-border" alt="entrant" style="width:100%"></div>
+           </div>
+        <div class="w3-half" >
+            <h2 class="">${userInfo.firstName}  ${userInfo.lastName}</h2>
+          <br>
+            <label class="">Email:</label>
+            <h3 class="">${userInfo.email}</h3>
+
+            <label class="">City:</label>
+            <h3 class="">${entrantInfo.city}</h3>
+
+            <label class="">Shcool:</label>
+            <h3 class="">${entrantInfo.school}</h3>
+
+        </div>
+       
+      </div>
+      </div>
+        
+       
 
 
 </div>
-</div>
+
 
 
 

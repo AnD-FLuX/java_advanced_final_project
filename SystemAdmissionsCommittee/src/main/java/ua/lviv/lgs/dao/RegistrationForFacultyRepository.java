@@ -8,4 +8,7 @@ import ua.lviv.lgs.domain.RegistrationForFaculty;
 @Repository
 public interface RegistrationForFacultyRepository extends JpaRepository<RegistrationForFaculty, Integer> {
 
+	
+	
+	
 }

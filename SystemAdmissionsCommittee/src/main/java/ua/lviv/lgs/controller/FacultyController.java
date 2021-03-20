@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import ua.lviv.lgs.domain.Faculty;
@@ -46,8 +47,13 @@ public class FacultyController {
 	}
 
 	@PostMapping("/addFaculty")
-	public ModelAndView createFaculty(@RequestParam String name, @RequestParam Integer numberOfStudents,
-			@RequestParam String firstSubject, @RequestParam String secondSubject, @RequestParam String thirdSubject)
+	public ModelAndView createFaculty(
+			@RequestParam MultipartFile logoUrl,
+			@RequestParam String name, 
+			@RequestParam Integer numberOfStudents,
+			@RequestParam String firstSubject, 
+			@RequestParam String secondSubject, 
+			@RequestParam String thirdSubject)
 			throws IOException {
 
 		List<Subject> subjects = new ArrayList<>();
@@ -55,7 +61,7 @@ public class FacultyController {
 		subjects.add(new Subject(secondSubject));
 		subjects.add(new Subject(thirdSubject));
 
-		facultyService.save(facultyDtoMapper.createEntity(name, numberOfStudents, subjects));
+		facultyService.save(facultyDtoMapper.createEntity(name, numberOfStudents, logoUrl, subjects));
 
 		return new ModelAndView("redirect:/viewFaculties");
 	}

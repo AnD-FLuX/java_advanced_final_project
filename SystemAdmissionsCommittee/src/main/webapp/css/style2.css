@@ -4,5 +4,10 @@ body {
 }
 
 .w3-bar-item {
-	text-shadow: 2px 2px 0 #444;
+	text-shadow: 1px 1px 0 #000000;
+}
+
+.photo{
+	background: url('/images/noPhoto.png');
+	background-size: cover;
 }

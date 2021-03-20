@@ -26,7 +26,6 @@ public class Entrant {
 	@Column
 	private String school;
 
-	@Column
 	private String uploadPhoto;
 
 	@OneToOne
@@ -40,10 +39,15 @@ public class Entrant {
 	public Entrant() {
 	}
 
-	public Entrant(String city, String school, String uploadPhoto) {
+	public Entrant(String city, String school) {
 		this.city = city;
 		this.school = school;
-		this.uploadPhoto = uploadPhoto;
+	}
+
+	public Entrant(Integer id, String city, String school) {
+		this.id = id;
+		this.city = city;
+		this.school = school;
 	}
 
 	public Integer getId() {
@@ -129,17 +133,12 @@ public class Entrant {
 				return false;
 		} else if (!school.equals(other.school))
 			return false;
-		if (uploadPhoto == null) {
-			if (other.uploadPhoto != null)
-				return false;
-		} else if (!uploadPhoto.equals(other.uploadPhoto))
-			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Entrant [id=" + id + ", city=" + city + ", school=" + school + ", uploadPhoto=" + uploadPhoto + "]";
+		return "Entrant [id=" + id + ", city=" + city + ", school=" + school + "]";
 	}
 
 }

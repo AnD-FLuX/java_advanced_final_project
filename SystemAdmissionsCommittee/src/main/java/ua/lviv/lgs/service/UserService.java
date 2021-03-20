@@ -23,6 +23,12 @@ public class UserService {
 		userRepository.save(user);
 	}
 
+	public void update(User user) {
+		userRepository.save(user);
+	}
+
+	
+	
 	public User findByEmail(String email) {
         return userRepository.findByEmail(email).get();
     }
