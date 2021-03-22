@@ -1,5 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
@@ -23,22 +24,32 @@
 <!-- Sidebar -->
 <div class="w3-sidebar w3-bar-block w3-dark-gray" style="width:220px">
 	<h2 style="margin: 15px; font-size: 25px">Welcome ${pageContext.request.userPrincipal.name} </h2>
+ <sec:authorize access="hasRole('ROLE_USER')">
  <hr>
   <h5 class="w3-bar-item">Manage:</h5>
  <a href="/userAccount" class="w3-bar-item w3-button w3-hover-red w3-cursive"> <i class="far fa-address-card"></i>  Account</a>
+ </sec:authorize>
+  <sec:authorize access="hasRole('ROLE_ENTRANT')">
+ <hr>
+  <h5 class="w3-bar-item">Manage:</h5>
  <a href="/entrantAccount" class="w3-bar-item w3-button w3-hover-red w3-cursive"> <i class="far fa-address-card"></i>  Account</a>
+ </sec:authorize>
   <hr>
   <h5 class="w3-bar-item">General:</h5>
   
   <a href="/home" class="w3-bar-item w3-button w3-hover-green w3-cursive"><i class="fas fa-home"></i>  Home</a>
+	<sec:authorize access="hasRole('ROLE_ENTRANT')">
   <a href="/registrationFaculty" class="w3-bar-item w3-button w3-hover-green w3-green w3-cursive"><i class="fas fa-university"></i>  Registration Faculty</a>
   <a href="/myApplications" class="w3-bar-item w3-button w3-hover-green w3-cursive"><i class="fas fa-outdent"></i>  My Applications</a>
+ </sec:authorize>
   <hr>
+    <sec:authorize access="hasRole('ROLE_ADMIN')">
   <h5 class="w3-bar-item">Administration:</h5>
     <a href="/viewFaculties" class="w3-bar-item w3-button w3-hover-blue  w3-cursive"><i class="fas fa-user-graduate"></i>  View Faculties</a>
   <a href="/createFaculty" class="w3-bar-item w3-button w3-hover-blue w3-cursive"><i class="far fa-edit"></i>  Creating Faculties</a>
   <a href="/viewApplications" class="w3-bar-item w3-button w3-hover-blue w3-cursive"><i class="fas fa-list-ol"></i>  View Applications</a>
   <hr>
+  </sec:authorize>
   <h5 class="w3-bar-item">System:</h5>
   <a onclick="document.forms['logoutForm'].submit()" class="w3-bar-item w3-button w3-hover-red w3-cursive"><i class="fas fa-sign-out-alt"></i>  LogOut</a>
 
@@ -72,7 +83,7 @@
 								<h3>${currentFaculty.name}</h3>
 								<p>${currentFaculty.numberOfStudents}</p>
 								<p>${currentFaculty.subjects}</p>
-								<button class="w3-btn w3-hover-grey w3-green w3-margin-bottom" >Register here</button>
+								<a href="${contextPath}/addReg?id=${currentFaculty.id}" class="w3-btn w3-hover-grey w3-green w3-margin-bottom" >Register here</a>
 							</div>
 						</div>
 					

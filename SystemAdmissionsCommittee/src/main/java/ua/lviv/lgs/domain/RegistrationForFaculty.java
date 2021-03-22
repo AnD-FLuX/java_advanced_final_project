@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "faculty_registrations")
@@ -34,16 +35,22 @@ public class RegistrationForFaculty {
 	@JoinColumn(name = "entrant_id")
 	private Entrant entrant;
 
+	@Transient
+	private Integer facultyId;
+
+	@Transient
+	private String email;
+
+	@Column
+	private Integer sumMarks;
+
 	public RegistrationForFaculty() {
 	}
 
-	public RegistrationForFaculty(List<Integer> marks, String uploadDocument) {
+	public RegistrationForFaculty(List<Integer> marks) {
 		this.marks = marks;
-		this.uploadDocument = uploadDocument;
 	}
 
-	
-	
 	public Integer getId() {
 		return id;
 	}
@@ -84,13 +91,36 @@ public class RegistrationForFaculty {
 		this.entrant = entrant;
 	}
 
+	public int getFacultyId() {
+		return facultyId;
+	}
+
+	public void setFacultyId(Integer facultyId) {
+		this.facultyId = facultyId;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Integer getSumMarks() {
+		return sumMarks;
+	}
+
+	public void setSumMarks(Integer sumMarks) {
+		this.sumMarks = sumMarks;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((marks == null) ? 0 : marks.hashCode());
-		result = prime * result + ((uploadDocument == null) ? 0 : uploadDocument.hashCode());
 		return result;
 	}
 

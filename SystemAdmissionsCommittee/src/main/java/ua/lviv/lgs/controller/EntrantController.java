@@ -50,21 +50,6 @@ public class EntrantController {
 		model.addAttribute("entrantInfo", user.getEntrant());
 		return "entrantAccount";
 	}
-//		public ModelAndView entrant() {
-//		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//		
-//		String userEmail = auth.getName();
-//		
-//		User user = userService.findByEmail(userEmail);
-//
-//
-//		Entrant entrant = new Entrant();
-//		entrant.setUser(user);
-//
-//		ModelAndView modelAndView = new ModelAndView("entrant");
-//		modelAndView.addObject("entrant", entrant);
-//		modelAndView.addObject("currentUser", user);
-//		return modelAndView;
 
 	@PostMapping("/userAccount")
 	public ModelAndView createEntrant(

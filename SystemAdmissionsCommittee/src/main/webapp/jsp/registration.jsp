@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
@@ -16,18 +16,16 @@
     <meta name="author" content="AnD_FLuX">
 <title>Create an account</title>
 
-<link rel="shortcut icon" href="images/favicon.png" type="image/png">
-<link rel='stylesheet prefetch'
-	href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
-
-<link rel="stylesheet" href="css/style.css">
+	<link rel="shortcut icon" href="images/favicon.png" type="image/png">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 	<div class="container">
 		<header>
 			<h1>
-				<a href="#"> <img src="images/logo.png"	alt="Admissions Committee"></a>
+			<img src="images/logo.png"	alt="Admissions Committee">
 			</h1>
 		</header>
 		<h1 class="text-center">Register</h1>
@@ -82,7 +80,7 @@
 				<button type="submit" class="submit" name="submit">Sign Me Up</button>
 			</div>
 			
-			<h4 class="text-center marg-tp"><a href="${contextPath}/login">Back to LogIn</a></h4>
+			<h5 class="text-center marg-tp"><a href="${contextPath}/login">Back to LogIn</a></h5>
 			
 		 </form:form>
 	</div>

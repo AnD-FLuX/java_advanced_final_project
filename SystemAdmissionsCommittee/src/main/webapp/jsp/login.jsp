@@ -14,20 +14,21 @@
     <meta name="author" content="AnD_FLuX">
     <title>Log in with your account</title>
     <link rel="shortcut icon" href="images/favicon.png" type="image/png">
-    <link rel='stylesheet prefetch'
-	href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
-
-<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
 <div class="container">
+
 <header>
 			<h1>
-				<a href="#"> <img src="images/logo.png"	alt="Admissions Committee"></a>
+				<img src="images/logo.png"	alt="Admissions Committee">
 			</h1>
 		</header>
+		
+		
 	<h1 class="text-center">Log In</h1>
     <form method="POST" action="${contextPath}/login" class="registration-form">
  
@@ -60,7 +61,7 @@
             </div>
             	
 			
-         	<h4 class="text-center marg-tp"><a href="${contextPath}/registration">Create an account</a></h4>
+         	<h5 class="text-center marg-tp"><a href="${contextPath}/registration">Create an account</a></h5>
         	
         	
    		</div>

@@ -52,16 +52,4 @@ public class UserController {
 		return "home";
 	}
 
-
-	@GetMapping("/myApplications")
-	public String myApplications() {
-		return "myApplications";
-	}
-
-
-	@GetMapping("/viewApplications")
-	public String viewApplications() {
-		return "viewApplications";
-	}
-
 }

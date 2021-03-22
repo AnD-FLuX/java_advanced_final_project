@@ -34,16 +34,16 @@ public class FacultyController {
 
 	@GetMapping("/viewFaculties")
 	public ModelAndView viewFaculties() {
-		ModelAndView map = new ModelAndView("viewFaculties");
-		map.addObject("viewFaculties", facultyService.getAllFaculties());
-		return map;
+		ModelAndView modelAndView = new ModelAndView("viewFaculties");
+		modelAndView.addObject("viewFaculties", facultyService.getAllFaculties());
+		return modelAndView;
 	}
 
 	@GetMapping("/registrationFaculty")
 	public ModelAndView registrationFaculty() {
-		ModelAndView map = new ModelAndView("registrationFaculty");
-		map.addObject("registrationFaculty", facultyService.getAllFaculties());
-		return map;
+		ModelAndView modelAndView = new ModelAndView("registrationFaculty");
+		modelAndView.addObject("registrationFaculty", facultyService.getAllFaculties());
+		return modelAndView;
 	}
 
 	@PostMapping("/addFaculty")
@@ -70,16 +70,32 @@ public class FacultyController {
 	public ModelAndView deleteFaculty(@PathVariable String delete, @PathVariable Integer id) {
 		if (delete.equals("delete")) {
 			facultyService.deleteById(id);
-			getFacultyItems();
 		}
 		return new ModelAndView("redirect:/viewFaculties");
 	}
 
-	
-	private ModelAndView getFacultyItems() {
-		ModelAndView mav = new ModelAndView("admin_panel");
-		mav.addObject("facultetItems", facultyService.getAllFaculties());
-		return mav;
-	}
+
+
+
+
+
+
+
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

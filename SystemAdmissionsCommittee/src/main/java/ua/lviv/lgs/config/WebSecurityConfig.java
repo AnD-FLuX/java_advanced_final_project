@@ -36,17 +36,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		 http.authorizeRequests().antMatchers("/").permitAll()
+		http
+		.authorizeRequests()
+		 .antMatchers("/", "/404").permitAll()
 		 .antMatchers("/userAccount").access("hasRole('ROLE_USER')")
 		 .antMatchers("/entrantAccount").access("hasRole('ROLE_ENTRANT')")
-		 
 		 .antMatchers("/home").authenticated()
 		 .antMatchers("/registrationFaculty").access("hasRole('ROLE_ENTRANT') or hasRole('ROLE_ADMIN')")
-		 
+		 .antMatchers("/addRegistrationFaculty").access("hasRole('ROLE_ENTRANT')")
+		 .antMatchers("/addReg").access("hasRole('ROLE_ENTRANT')")
 		 .antMatchers("/viewFaculties").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 		 .antMatchers("/createFaculty").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 		 .antMatchers("/viewApplications").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
-		 .anyRequest().permitAll().and()
+		 .anyRequest().permitAll()
+		 .and()
          .formLogin().loginPage("/login")
          .defaultSuccessUrl("/home").usernameParameter("email").passwordParameter("password").and()
          .logout().logoutSuccessUrl("/login?logout").and()
