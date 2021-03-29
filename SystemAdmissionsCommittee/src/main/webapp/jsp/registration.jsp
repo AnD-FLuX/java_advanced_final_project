@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -34,7 +34,7 @@
 		
 		<spring:bind path="firstName">
 				<label class="col-one-half"> 
-					<span class="label-text">First Name</span> 
+					<span class="label-text"><spring:message code='firstName'/></span> 
 					<form:input type="text" path="firstName" name="firstName" required="true"></form:input>
 					<form:errors path="firstName"></form:errors>
 				</label> 	
@@ -43,7 +43,7 @@
 			
 		<spring:bind path="lastName">	
 				<label class="col-one-half">
-					<span class="label-text">Last Name</span> 
+					<span class="label-text"><spring:message code='lastName'/></span> 
 					<form:input type="text"  path="lastName" name="lastName" required="true"></form:input>
 					<form:errors path="lastName"></form:errors>
 				</label> 		
@@ -52,7 +52,7 @@
 					
 		<spring:bind path="email">			
 				<label> 
-					<span class="label-text">Email</span> 
+					<span class="label-text"><spring:message code='email'/></span> 
 					<form:input	type="text" path="email" name="email" required="true"></form:input>
 					<form:errors path="email"></form:errors>	
 				</label> 			
@@ -61,7 +61,7 @@
 		
 		<spring:bind path="password">
          		<label class="password"> 
-					<span class="label-text">Password</span>
+					<span class="label-text"><spring:message code='password'/></span>
 					<form:input id="t1" type="password" path="password" name="password" required="true" minlength="8"></form:input>
 					<form:errors path="password"></form:errors>
 				</label>
@@ -69,7 +69,7 @@
 			
 		<spring:bind path="passwordConfirm">	
 			 	<label class="password"> 
-			 		<span id="t3" class="label-text">Password confirm</span> 
+			 		<span id="t3" class="label-text"><spring:message code='passwordConfirm'/></span> 
 			 		<form:input id="t2" type="password" path="passwordConfirm" name="passwordConfirm" required="true" minlength="8"></form:input>
             		<form:errors path="passwordConfirm"></form:errors>
 				</label>
@@ -77,10 +77,10 @@
 
 
 			<div class="text-center marg-tp">
-				<button type="submit" class="submit" name="submit">Sign Me Up</button>
+				<button type="submit" class="submit" name="submit"><spring:message code='login.sign'/></button>
 			</div>
 			
-			<h5 class="text-center marg-tp"><a href="${contextPath}/login">Back to LogIn</a></h5>
+			<h5 class="text-center marg-tp"><a href="${contextPath}/login"><spring:message code='login.back'/></a></h5>
 			
 		 </form:form>
 	</div>

@@ -15,12 +15,14 @@ public class EntrantDtoMapper {
 	@Autowired
 	private FileService fileService;
 
-	public Entrant createEntity(String city, String school, MultipartFile uploadPhoto) throws IOException {
+	public Entrant createEntity(String city, String school, Integer certificatAvarageMark, MultipartFile uploadPhoto) throws IOException {
 
 		Entrant entrant = new Entrant();
 
 		entrant.setCity(city);
 		entrant.setSchool(school);
+		entrant.setCertificatAvarageMark(certificatAvarageMark);
+		
 		entrant.setUploadPhoto(fileService.saveFileAndReturnPathForDB(uploadPhoto, entrant.getCity()));
 
 		return entrant;

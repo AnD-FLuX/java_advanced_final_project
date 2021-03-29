@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
@@ -23,36 +25,38 @@
 
 <!-- Sidebar -->
 <div class="w3-sidebar w3-bar-block w3-dark-gray" style="width:220px">
-	<h2 style="margin: 15px; font-size: 25px">Welcome ${pageContext.request.userPrincipal.name} </h2>
-<sec:authorize access="hasRole('ROLE_USER')">  
- <hr>
-  <h5 class="w3-bar-item">Manage:</h5>
- 
+	<h2 style="margin: 15px; font-size: 25px"><spring:message code='welcome'/> ${pageContext.request.userPrincipal.name} </h2>
+
+  
+  <sec:authorize access="hasRole('ROLE_USER')">
+   <hr>
+  <h5 class="w3-bar-item"><spring:message code='manage'/>:</h5>
+ <a href="/userAccount" class="w3-bar-item w3-button w3-hover-red w3-cursive"> <i class="far fa-address-card"></i>  <spring:message code='account'/></a>
  </sec:authorize>
- <sec:authorize access="hasRole('ROLE_ENTRAN')">
- <hr>
-  <h5 class="w3-bar-item">Manage:</h5><a href="/userAccount" class="w3-bar-item w3-button w3-hover-red w3-cursive"> <i class="far fa-address-card"></i>  Account</a>
- <a href="/entrantAccount" class="w3-bar-item w3-button w3-hover-red w3-cursive"> <i class="far fa-address-card"></i>  Account</a>
-  
-  </sec:authorize>
-  <hr>
-  <h5 class="w3-bar-item">General:</h5>
-  
-  <a href="/home" class="w3-bar-item w3-button w3-hover-green w3-cursive"><i class="fas fa-home"></i>  Home</a>
    <sec:authorize access="hasRole('ROLE_ENTRANT')">
-  <a href="/registrationFaculty" class="w3-bar-item w3-button w3-hover-green w3-cursive"><i class="fas fa-university"></i>  Registration Faculty</a>
-  <a href="/myApplications" class="w3-bar-item w3-button w3-hover-green w3-cursive"><i class="fas fa-outdent"></i>  My Applications</a>
-   </sec:authorize>
+     <hr>
+  <h5 class="w3-bar-item"><spring:message code='manage'/>:</h5>
+ <a href="/entrantAccount" class="w3-bar-item w3-button w3-hover-red w3-cursive"> <i class="far fa-address-card"></i>  <spring:message code='account'/></a>
+ </sec:authorize>
   <hr>
-   <sec:authorize access="hasRole('ROLE_ADMIN')">
-  <h5 class="w3-bar-item">Administration:</h5>
-      <a href="/viewFaculties" class="w3-bar-item w3-button w3-hover-blue w3-blue w3-cursive"><i class="fas fa-user-graduate"></i>  View Faculties</a>  
-  <a href="/createFaculty" class="w3-bar-item w3-button w3-hover-blue w3-cursive"><i class="far fa-edit"></i>  Creating Faculties</a>
-  <a href="/viewApplications" class="w3-bar-item w3-button w3-hover-blue w3-cursive"><i class="fas fa-list-ol"></i>  View Applications</a>
+  <h5 class="w3-bar-item"><spring:message code='general'/>:</h5>
+  
+  <a href="/home" class="w3-bar-item w3-button w3-hover-green w3-cursive"><i class="fas fa-home"></i>  <spring:message code='home'/></a>
+  <sec:authorize access="hasRole('ROLE_ENTRANT')">
+    <a href="/registrationFaculty" class="w3-bar-item w3-button w3-hover-green w3-cursive"><i class="fas fa-university"></i>  <spring:message code='registrationFaculty'/></a>
+  <a href="/myApplications" class="w3-bar-item w3-button w3-hover-green w3-cursive"><i class="fas fa-outdent"></i>  <spring:message code='myApplications'/></a>
+  </sec:authorize>
+  
+  <sec:authorize access="hasRole('ROLE_ADMIN')">
   <hr>
-   </sec:authorize>
-  <h5 class="w3-bar-item">System:</h5>
-  <a onclick="document.forms['logoutForm'].submit()" class="w3-bar-item w3-button w3-hover-red w3-cursive"><i class="fas fa-sign-out-alt"></i>  LogOut</a>
+    <h5 class="w3-bar-item"><spring:message code='administration'/>:</h5>
+    <a href="/viewFaculties" class="w3-bar-item w3-button w3-hover-blue  w3-cursive"><i class="fas fa-user-graduate"></i>  <spring:message code='viewFaculties'/></a>
+  <a href="/createFaculty" class="w3-bar-item w3-button w3-hover-blue w3-cursive"><i class="far fa-edit"></i>  <spring:message code='createFaculty'/></a>
+  <a href="/viewApplications" class="w3-bar-item w3-button w3-hover-blue w3-cursive"><i class="fas fa-list-ol"></i>  <spring:message code='viewApplications'/></a>
+ </sec:authorize>
+  <hr>
+  <h5 class="w3-bar-item"><spring:message code='system'/>:</h5>
+  <a onclick="document.forms['logoutForm'].submit()" class="w3-bar-item w3-button w3-hover-red w3-cursive"><i class="fas fa-sign-out-alt"></i>  <spring:message code='logout'/></a>
 
    <div class="w3-display-bottommiddle"><img src="/images/logo.png" alt="education" style="width:200px"></div>                             
 </div>
@@ -60,7 +64,7 @@
 <!-- Page Content -->
 <div style="margin-left:220px">
 <div class="w3-container w3-dark-gray w3-center w3-card-4">
-  <h2><i class="fab fa-centos" style="text-shadow: 3px 2px 0 #444"></i>  System Admissions Committee</h2>
+  <h2><i class="fab fa-centos" style="text-shadow: 3px 2px 0 #444"></i>  <spring:message code='sac'/></h2>
 </div>
 <c:if test="${pageContext.request.userPrincipal.name != null}">
         <form id="logoutForm" method="POST" action="${contextPath}/logout">
@@ -71,7 +75,7 @@
     
 <!--Content -->
 <div class="w3-container w3-blue w3-margin w3-card-4">
-  						<h2>View all faculties:</h2>
+  						<h2><spring:message code='viewFaculties'/>:</h2>
 						</div>
 		<div class="w3-container" style="display: flex; flex-wrap: wrap;">
  
@@ -87,7 +91,7 @@
 								<p>${currentFaculty.numberOfStudents}</p>
 								<p>${currentFaculty.subjects}</p>
 								<a href="${contextPath}/viewFaculties/delete/${currentFaculty.id}" 
-										class="w3-btn w3-hover-red w3-blue w3-margin-bottom">DELETE</a>
+										class="w3-btn w3-hover-red w3-blue w3-margin-bottom"><spring:message code='Delete'/></a>
 							</div>
 						</div>
 					

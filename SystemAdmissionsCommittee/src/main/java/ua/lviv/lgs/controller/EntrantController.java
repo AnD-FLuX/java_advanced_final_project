@@ -55,7 +55,8 @@ public class EntrantController {
 	public ModelAndView createEntrant(
 			@RequestParam MultipartFile uploadPhoto, 
 			@RequestParam String city, 
-			@RequestParam String school)
+			@RequestParam String school,
+			@RequestParam Integer certificatAvarageMark)
 			throws IOException {
 
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -65,7 +66,7 @@ public class EntrantController {
 		user.setRole(UserRole.ROLE_ENTRANT);
 		userService.update(user);
 		
-		Entrant entrant = entrantDtoMapper.createEntity(city, school, uploadPhoto);
+		Entrant entrant = entrantDtoMapper.createEntity(city, school, certificatAvarageMark, uploadPhoto);
 		entrant.setUser(user);
 		entrantService.save(entrant);
 

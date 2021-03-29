@@ -26,6 +26,9 @@ public class Entrant {
 	@Column
 	private String school;
 
+	@Column
+	private Integer certificatAvarageMark;
+
 	private String uploadPhoto;
 
 	@OneToOne
@@ -39,9 +42,10 @@ public class Entrant {
 	public Entrant() {
 	}
 
-	public Entrant(String city, String school) {
+	public Entrant(String city, String school, Integer certificatAvarageMark) {
 		this.city = city;
 		this.school = school;
+		this.certificatAvarageMark = certificatAvarageMark;
 	}
 
 	public Entrant(Integer id, String city, String school) {
@@ -82,6 +86,14 @@ public class Entrant {
 		this.uploadPhoto = uploadPhoto;
 	}
 
+	public Integer getCertificatAvarageMark() {
+		return certificatAvarageMark;
+	}
+
+	public void setCertificatAvarageMark(Integer certificatAvarageMark) {
+		this.certificatAvarageMark = certificatAvarageMark;
+	}
+
 	public User getUser() {
 		return user;
 	}
@@ -102,8 +114,8 @@ public class Entrant {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((certificatAvarageMark == null) ? 0 : certificatAvarageMark.hashCode());
 		result = prime * result + ((city == null) ? 0 : city.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((school == null) ? 0 : school.hashCode());
 		result = prime * result + ((uploadPhoto == null) ? 0 : uploadPhoto.hashCode());
 		return result;
@@ -118,27 +130,33 @@ public class Entrant {
 		if (getClass() != obj.getClass())
 			return false;
 		Entrant other = (Entrant) obj;
+		if (certificatAvarageMark == null) {
+			if (other.certificatAvarageMark != null)
+				return false;
+		} else if (!certificatAvarageMark.equals(other.certificatAvarageMark))
+			return false;
 		if (city == null) {
 			if (other.city != null)
 				return false;
 		} else if (!city.equals(other.city))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
 			return false;
 		if (school == null) {
 			if (other.school != null)
 				return false;
 		} else if (!school.equals(other.school))
 			return false;
+		if (uploadPhoto == null) {
+			if (other.uploadPhoto != null)
+				return false;
+		} else if (!uploadPhoto.equals(other.uploadPhoto))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Entrant [id=" + id + ", city=" + city + ", school=" + school + "]";
+		return "Entrant [city=" + city + ", school=" + school + ", certificatAvarageMark=" + certificatAvarageMark
+				+ ", uploadPhoto=" + uploadPhoto + "]";
 	}
 
 }

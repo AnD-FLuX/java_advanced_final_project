@@ -78,7 +78,7 @@ public class RegistrationForFacultyController {
 		RegistrationForFaculty entity = registrationForFacultyDtoMapper.createEntity(documentPhoto, faculty, entrant,
 				marks);
 
-		entity.setSumMarks(marks.stream().reduce(0, Integer::sum));
+		entity.setSumMarks((marks.stream().reduce(0, Integer::sum) + entrant.getCertificatAvarageMark())/ 4);
 		registrationForFacultyService.save(entity);
 		return "redirect:/myApplications";
 	}
@@ -90,10 +90,8 @@ public class RegistrationForFacultyController {
 		String userEmail = auth.getName();
 		Entrant entrant = userService.findByEmail(userEmail).getEntrant();
 
-		List<RegistrationForFaculty> entrantApplications = registrationForFacultyService
-				.showAllRegFaculty().stream()
-				.filter(obj -> obj.getEntrant().getId().equals(entrant.getId()))
-				.collect(Collectors.toList());
+		List<RegistrationForFaculty> entrantApplications = registrationForFacultyService.showAllRegFaculty().stream()
+				.filter(obj -> obj.getEntrant().getId().equals(entrant.getId())).collect(Collectors.toList());
 
 		return new ModelAndView("viewMyApplications", "facultyRegistrations", entrantApplications);
 	}

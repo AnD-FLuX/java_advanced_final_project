@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -16,6 +18,10 @@
     <link rel="shortcut icon" href="images/favicon.png" type="image/png">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css">
+	
+
+	
+	
 </head>
 
 <body>
@@ -29,7 +35,7 @@
 		</header>
 		
 		
-	<h1 class="text-center">Log In</h1>
+	<h1 class="text-center">Welcome</h1>
     <form method="POST" action="${contextPath}/login" class="registration-form">
  
 
@@ -40,13 +46,13 @@
             </div>
                 
             <label>
-            <span class="label-text marg-tp">Email</span> 
+            <span class="label-text marg-tp"><spring:message code='email'/></span> 
             <input name="email" type="text" name="email" required />
             
             </label> 
             
             <label>
-            <span class="label-text">Password</span> 
+            <span class="label-text"><spring:message code='password'/></span> 
             <input name="password" type="password" name="password" required />
             </label> 
             
@@ -57,11 +63,20 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			
 			<div class="text-center marg-tp">
-            	<button type="submit" class="submit" type="submit">Log In</button>
+            	<button type="submit" class="submit" type="submit"><spring:message code='login.login'/></button>
             </div>
             	
 			
-         	<h5 class="text-center marg-tp"><a href="${contextPath}/registration">Create an account</a></h5>
+         	<h5 class="text-center marg-tp"><a href="${contextPath}/registration"><spring:message code='login.create_account'/></a></h5>
+         	<div class="text-center marg-tp">
+				<fieldset>
+					<p><spring:message code="login.choose_language" /></p> 
+						<select	id="locales">
+							<option value="en"><spring:message code='login.english'/></option>
+							<option value="uk"><spring:message code='login.ukrainian'/></option>
+					</select>
+				</fieldset>
+			</div>
         	
         	
    		</div>
